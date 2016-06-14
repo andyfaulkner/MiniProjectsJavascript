@@ -9,11 +9,11 @@ function calcInterest(){
     var interest = parseInt(document.getElementById("interest").value);
     var term = parseInt(document.getElementById("term").value);
     
-    //calculate interest on full amount
+    //calculate interest
     var totalInterest = (amount*(interest/100)) * term;
     var interestPerMonth = totalInterest / (term *12);
     interestPerMonth = interestPerMonth.toFixed(2);
-    //calculate the interest each month
+   
     
 document.getElementById("intValue").innerHTML = "The total interest will be £" + totalInterest + "<br>The interest payable each month will be £" + interestPerMonth;
 }

@@ -16,8 +16,7 @@ function randomNumber(){
 
 //create the main game logic
 function startGame(){
-    var guess = parseInt(document.getElementById("input1").value);
-        
+    var guess = parseInt(document.getElementById("input1").value);   
     //evalulate if the guess is correct
     if (guess === numToGuess){
         amountOfGuess++;
@@ -29,10 +28,8 @@ function startGame(){
         amountOfGuess++;
     } else {
         document.getElementById("highLow").innerHTML = "Lower!!";
-        
         amountOfGuess++;
     }
-    
 }
 
 //Winning output

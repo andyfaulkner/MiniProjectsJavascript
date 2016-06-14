@@ -1,0 +1,25 @@
+body {
+    background-color:#819b9a;
+    opacity: 0.85;
+    }
+
+div {
+    font-family: 'Roboto', sans-serif;
+    font-size: 'large';
+    color: azure;
+}
+
+h1 {
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+    font-size: 'xx-large';
+    font-style: normal;
+    font-weight: bold;
+    opacity: 1;
+    }
+
+button {
+    font-family: 'Roboto', sans-serif;
+    font-size: 'large';
+    font-weight: bolder;
+}

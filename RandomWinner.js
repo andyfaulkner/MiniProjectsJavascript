@@ -1,5 +1,6 @@
 //Global varibles
 var contestants = [];
+var entrants = "";
 
 //Create the click event to add contestant to array
 var event1 = document.getElementById("addName");
@@ -11,11 +12,14 @@ var event2 = document.getElementById("generateWinner");
 
 //Create function for adding the contestants
 function addContestant(){
-    contestants.push(document.getElementById("contestantName").value);
+    var addPerson = document.getElementById("contestantName").value; 
+    contestants.push(addPerson);
+    entrants += "<li>" + addPerson + "</li>"
+    document.getElementById("output").innerHTML = "Entering this incredible competition is: <br><ul>" + entrants + "</ul>";
 }
 
 //Generate a random winner
 function pickWinner() {
     var winner = contestants[Math.floor(Math.random() * contestants.length)];
-    document.getElementById("output").innerHTML = "The winner is " + winner;
+    document.getElementById("output2").innerHTML = "<h2>The winner is " + winner + "!!!</h2>";
 }

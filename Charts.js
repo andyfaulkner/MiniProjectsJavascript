@@ -1,7 +1,5 @@
 //Global varibles
 var randomArray = [];
-var arrayFile = [];
-var x = document.getElementById("fileImport");
 
 //Call on load function to draw the chart
 document.addEventListener('load',randomArrayMethod(),false);
@@ -15,7 +13,7 @@ function randomArrayMethod(){
 }
 
 function drawChart () {
-  /*  var chart = new CanvasJS.Chart("chartContainer",
+   var chart = new CanvasJS.Chart("chartContainer",
     {
       title:{
       text: "Random Chart"  
@@ -35,6 +33,5 @@ function drawChart () {
       ]
     });
 
-    chart.render();*/
-    document.getElementById("output").innerHTML = x;
+    chart.render();
   }

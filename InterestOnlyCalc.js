@@ -11,7 +11,7 @@ function calcInterest(){
     
     //calculate interest
     var totalInterest = (amount*(interest/100)) * term;
-    var interestPerMonth = totalInterest / (term *12);
+    var interestPerMonth = totalInterest / (term * 12);
     interestPerMonth = interestPerMonth.toFixed(2);
    
     

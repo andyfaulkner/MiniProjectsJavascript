@@ -12,6 +12,10 @@ var event1 = document.getElementById("submit");
 
 //Main load logic starts here
 function objectCreation(){
+    //hide the submit button until the last question
+    document.getElementById("submit").style.visibility = "hidden";
+    document.getElementById("addQuestion").style.visibility = "hidden";
+    
     //Create the object constructer
     function questionData (question, optionOne, optionTwo, optionThree, correctAnswer) {
         this.question = question;
@@ -37,20 +41,24 @@ function objectCreation(){
 
 //function to take the answer automatically and then move on to the next question
 function answerQuestion(answer){
-    if (questionNumber == 4){
-        document.getElementById("output").innerHTML = "Your score was " + score;
-    }
-    else if (answer === questionsArray[questionNumber].correctAnswer){
+    //evalulate the answer and increase the score if correct    
+    if (answer === questionsArray[questionNumber].correctAnswer){
         score++;    
     }
     questionNumber++;
     questionToPage();
     document.getElementById("answers").reset();
+    if (questionNumber == 4){
+        //show the submit button to trigger the score
+        document.getElementById("submit").style.visibility = "visible";    
+    }
 }
 
 //Submit answer function
 function submitAnswer(){
-    
+    document.getElementById("output").innerHTML = "Your score was " + score;
+    //show the button to add new questions
+    document.getElementById("addQuestion").style.visibility = "visible";  
 }
 
 //function to populated the question data to the page
@@ -59,4 +67,9 @@ function questionToPage(){
     document.getElementById("optionOne").innerHTML = questionsArray[questionNumber].optionOne;
     document.getElementById("optionTwo").innerHTML = questionsArray[questionNumber].optionTwo;
     document.getElementById("optionThree").innerHTML = questionsArray[questionNumber].optionThree;
+}
+
+//function to add new questions to the quiz
+function addQuestion(){
+    
 }

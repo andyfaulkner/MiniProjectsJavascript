@@ -25,3 +25,7 @@
 .myInput {
     color: black;
 }
+
+.col-sm-8.leftAlign {
+    text-align: left;
+}

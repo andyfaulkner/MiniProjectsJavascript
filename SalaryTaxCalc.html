@@ -13,6 +13,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
     <!-- Latest compiled JavaScript -->
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="canvasjs.min.js"></script>
 <title>Salary Tax Calculator</title>
 </head>
 
@@ -28,8 +29,10 @@
                     <input class="myInput" type="number" id="annualWage"/>
                 </form>
             </div> <!-- close column -->
-            <div class="col-sm-8">
+            <div class="col-sm-2">
                 <p>Annual Wage</p>
+            </div> <!-- close column -->
+            <div class="col-sm-6">
             </div> <!-- close column -->
         </div> <!-- close row -->
     
@@ -91,12 +94,28 @@
         </div><!-- close row -->
         <div class="row">
             <div class="col-sm-6">
+                <div id="totalNatInsText"></div>
+            </div><!-- close column -->
+            <div class="col-sm-6">
+                <div id="totalNatIns"></div>
+            </div><!-- close column -->
+        </div><!-- close row -->
+        <div class="row">
+            <div class="col-sm-6">
                 <div id="totalAfterTaxText"></div>
             </div><!-- close column -->
             <div class="col-sm-6">
                 <div id="totalAfterTax"></div>
             </div><!-- close column -->
         </div><!-- close row -->
+        <br>
+        <!-- Display the chart -->
+        <div class="row">
+            <div class="col-sm-12">
+                <div id="chartContainer"></div>
+            </div><!-- close column -->
+        </div><!-- close row -->
+        
     
     <!-- Backup display if under tax threshold -->
     <div class="row">

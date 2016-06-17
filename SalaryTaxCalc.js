@@ -3,6 +3,9 @@ var higherValTax = 0;
 var lowerValTax = 0;
 var totalWage = 0;
 var allowanceVal = 11000;
+var natInsContribution = 0;
+var afterTax = 0;
+var totalValTax = 0;
 
 //create on click event to accept the value calculate the tax and then print to the screen
 var event1 = document.getElementById("submit");
@@ -13,7 +16,10 @@ function calcTax(){
     
     //get user input and set to a varible
     totalWage = parseInt(document.getElementById("annualWage").value);
-    //alert(totalWage);
+    
+    //call to the function to calculate nation insurance contributions
+    nationInsurance();
+    
     //break down salary to work out which tax brackets they fall in to then fire off the functions to calculate tax and then print to the screen
     if (totalWage > 100000){
         allowanceVal = 0;
@@ -21,8 +27,7 @@ function calcTax(){
         twentyTax(32000);
         fourtyTax(higherValTax);
         printResult();
-    }
-    if (totalWage > 43000){
+    } else if (totalWage > 43000){
         higherValTax = totalWage - 43000;
         twentyTax(32000);
         fourtyTax(higherValTax);
@@ -49,6 +54,22 @@ function fourtyTax(taxIncome){
     higherValTax = higherValTax * 0.4;
 }
 
+//national insurance calculations
+function nationInsurance(){
+    var weeklyWage = totalWage / 52;
+    if (weeklyWage > 827){
+        var highNatIns = weeklyWage - 827
+        natInsContribution = (highNatIns * 0.02) * 52;
+        natInsContribution += (827 * 0.12) * 52;
+        natInsContribution -= 1000;
+    } else if (weeklyWage > 155 && weeklyWage < 827) {
+        natInsContribution = (weeklyWage * 0.12) * 52;
+        natInsContribution -= 1000;
+    } else {
+        natInsContribution = 0;
+    }
+}
+
 //function for bringing the calculations together and printing the result to the screen
 function printResult(){
     //check if wage falls in to higher bracket if so include that value in the printout
@@ -73,12 +94,42 @@ function printResult(){
     document.getElementById("line").innerHTML = "________";
     
     //calculate the total amount of tax
-    var totalValTax = lowerValTax + higherValTax;
+    totalValTax = lowerValTax + higherValTax;
     document.getElementById("totalTaxText").innerHTML = "Total tax payable: ";
     document.getElementById("totalTax").innerHTML = "£" + totalValTax;
     
     //calculate the value after tax
-    var afterTax = totalWage - totalValTax;
-    document.getElementById("totalAfterTaxText").innerHTML = "Total wage after tax: ";
-    document.getElementById("totalAfterTax").innerHTML = "£" + afterTax;
+    afterTax = totalWage - totalValTax - natInsContribution;
+    document.getElementById("totalAfterTaxText").innerHTML = "Total wage after deductions: ";
+    document.getElementById("totalAfterTax").innerHTML = "£" + afterTax.toFixed(2);
+    
+    //Nationl insurance contributions
+    document.getElementById("totalNatInsText").innerHTML = "Total national insurance contributions: ";
+    document.getElementById("totalNatIns").innerHTML = "£" + natInsContribution.toFixed(2);
+    
+    //draw the chart
+    drawChart();
 }
+
+//function to display it as a chart
+function drawChart () {
+   var chart = new CanvasJS.Chart("chartContainer",
+    {
+      title:{
+      text: "Annual Earnings Breakdown"  
+      },
+      data: [
+      {        
+        type: "pie",
+        dataPoints: [
+        { y: natInsContribution },
+        { y: totalValTax},
+        { y: afterTax }
+      
+        ]
+      }
+      ]
+    });
+
+    chart.render();
+  }

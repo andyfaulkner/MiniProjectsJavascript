@@ -6,6 +6,10 @@ var score = 0;
 //Create an on load function to all the function to create the objects and then put them into an array
 document.addEventListener('load',objectCreation(),false);
 
+//Add a click event to fix all the bugs
+var event1 = document.getElementById("submit");
+    event1.addEventListener('click',submitAnswer,false);
+
 //Main load logic starts here
 function objectCreation(){
     //Create the object constructer
@@ -37,11 +41,16 @@ function answerQuestion(answer){
         document.getElementById("output").innerHTML = "Your score was " + score;
     }
     else if (answer === questionsArray[questionNumber].correctAnswer){
-        score++;
+        score++;    
     }
     questionNumber++;
     questionToPage();
     document.getElementById("answers").reset();
+}
+
+//Submit answer function
+function submitAnswer(){
+    
 }
 
 //function to populated the question data to the page

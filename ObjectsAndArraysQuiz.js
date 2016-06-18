@@ -107,6 +107,7 @@ function subQuestAnswer(answer){
     answerSelection = answer;
 }
 
+//function to reset the quiz and hide all the elements
 function restartQuiz(){
     questionNumber = 0;
     document.getElementById("submit").style.visibility = "hidden";

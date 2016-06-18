@@ -37,6 +37,7 @@ function objectCreation(){
     //hide the submit and forms for inputing questions
     document.getElementById("submit").style.visibility = "hidden";
     document.getElementById("openQuestionInput").style.visibility = "hidden";
+    document.getElementById("restartQuizBut").style.visibility = "hidden";
     document.getElementById("newQestionForm").style.visibility = "hidden";
     
     //Create 5 objects with the question data in
@@ -72,7 +73,8 @@ function answerQuestion(answer){
 function submitAnswer(){
     document.getElementById("output").innerHTML = "Your score was " + score;
     //show the button to add new questions
-    document.getElementById("openQuestionInput").style.visibility = "visible";  
+    document.getElementById("openQuestionInput").style.visibility = "visible";
+    document.getElementById("restartQuizBut").style.visibility = "visible";
 }
 
 //function to populated the question data to the page
@@ -90,8 +92,6 @@ function startInputForm(){
 
 //function to add new questions to the quiz
 function addQuestion(){
-   
-    
     var question = document.getElementById("newQestion").value;
     var optionOne = document.getElementById("newOptionOne").value;
     var optionTwo = document.getElementById("newOptionTwo").value;
@@ -112,7 +112,9 @@ function restartQuiz(){
     document.getElementById("submit").style.visibility = "hidden";
     document.getElementById("openQuestionInput").style.visibility = "hidden";
     document.getElementById("newQestionForm").style.visibility = "hidden";
+    document.getElementById("restartQuizBut").style.visibility = "hidden";
     document.getElementById("output").innerHTML = "";
+    document.getElementById("answers").reset();
     score = 0;
     questionToPage();
 }

@@ -50,7 +50,7 @@
     <br>
     
     <div class="row">
-        <div id="output"></div>
+        <div id="output" class="subHeading"></div>
     </div> <!-- close row -->
     <br>
         
@@ -58,21 +58,23 @@
          <div class="col-sm-1">
             </div> <!-- close column -->
             <div class="col-sm-11">
-                <form id = "answers">
+                <form id = "newQuestFormReset">
                     <div>Input the new question and the options you wish them to pick. Also make sure that you select the radio button that corisponds with the correct answer.</div>
+                    <br>
                     <textarea class="myInput" id="newQestion" cols="40" rows="1"></textarea>
                     <br>
                     <br>
-                    <input type="radio" name="newQuestions" onclick="addQuestion(this.value)" value="answerOne"><input class="myInput" type="text" id="newOptionOne">
+                    <input type="radio" name="newQuestions" onclick="subQuestAnswer(this.value)" value="answerOne"><input class="myInput" type="text" id="newOptionOne">
                     <br>
-                    <input type="radio" name="newQuestions" onclick="addQuestion(this.value)" value="answerTwo"><input class="myInput" type="text" id="newOptionTwo">
+                    <input type="radio" name="newQuestions" onclick="subQuestAnswer(this.value)" value="answerTwo"><input class="myInput" type="text" id="newOptionTwo">
                     <br>
-                    <input type="radio" name="newQuestions" onclick="addQuestion(this.value)" value="answerThree"><input class="myInput" type="text" id="newOptionThree">
+                    <input type="radio" name="newQuestions" onclick="subQuestAnswer(this.value)" value="answerThree"><input class="myInput" type="text" id="newOptionThree">
                 </form>
                 <br>
-                <div><button class="myButton" id="submitQuestion">Submit Question</button><button class="myButton" id="restartQuiz">Restart the Quiz</button></div>
+                <div><button class="myButton" id="submitQuestion">Submit Question</button><button class="myButton" id="restartQuizBut">Restart the Quiz</button></div>
             </div> <!-- close column -->   
     </div> <!-- close row -->
+    <br>
         
     <script src="ObjectsAndArraysQuiz.js"></script>
     </div> <!-- close bootstrap container -->

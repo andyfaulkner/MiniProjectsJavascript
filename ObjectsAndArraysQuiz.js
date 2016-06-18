@@ -2,28 +2,42 @@
 var questionsArray = [];
 var questionNumber = 0;
 var score = 0;
+var answerSelection = "";
 
 //Create an on load function to all the function to create the objects and then put them into an array
 document.addEventListener('load',objectCreation(),false);
 
-//Add a click event to fix all the bugs
+//Add a click event to submit the final quiz
 var event1 = document.getElementById("submit");
     event1.addEventListener('click',submitAnswer,false);
 
+//Add a click event to sshow the new question input
+var event1 = document.getElementById("openQuestionInput");
+    event1.addEventListener('click',startInputForm,false);
+
+//add a click event to add the question to the array
+var event1 = document.getElementById("submitQuestion");
+    event1.addEventListener('click',addQuestion,false);
+
+//add a click event to restart the quiz and hide the input form
+var event1 = document.getElementById("restartQuizBut");
+    event1.addEventListener('click',restartQuiz,false);
+
+//Create the object constructer
+function questionData (question, optionOne, optionTwo, optionThree, correctAnswer) {
+    this.question = question;
+    this.optionOne = optionOne;
+    this.optionTwo = optionTwo;
+    this.optionThree = optionThree;
+    this.correctAnswer = correctAnswer;
+}
+
 //Main load logic starts here
 function objectCreation(){
-    //hide the submit button until the last question
+    //hide the submit and forms for inputing questions
     document.getElementById("submit").style.visibility = "hidden";
-    document.getElementById("addQuestion").style.visibility = "hidden";
-    
-    //Create the object constructer
-    function questionData (question, optionOne, optionTwo, optionThree, correctAnswer) {
-        this.question = question;
-        this.optionOne = optionOne;
-        this.optionTwo = optionTwo;
-        this.optionThree = optionThree;
-        this.correctAnswer = correctAnswer;
-    }
+    document.getElementById("openQuestionInput").style.visibility = "hidden";
+    document.getElementById("newQestionForm").style.visibility = "hidden";
     
     //Create 5 objects with the question data in
     var qustionOne = new questionData("When was the last time England won a major tournament?", "1996", "1966", "1906", "answerTwo");
@@ -48,7 +62,7 @@ function answerQuestion(answer){
     questionNumber++;
     questionToPage();
     document.getElementById("answers").reset();
-    if (questionNumber == 4){
+    if (questionNumber == (questionsArray.length - 1)){
         //show the submit button to trigger the score
         document.getElementById("submit").style.visibility = "visible";    
     }
@@ -58,7 +72,7 @@ function answerQuestion(answer){
 function submitAnswer(){
     document.getElementById("output").innerHTML = "Your score was " + score;
     //show the button to add new questions
-    document.getElementById("addQuestion").style.visibility = "visible";  
+    document.getElementById("openQuestionInput").style.visibility = "visible";  
 }
 
 //function to populated the question data to the page
@@ -69,7 +83,38 @@ function questionToPage(){
     document.getElementById("optionThree").innerHTML = questionsArray[questionNumber].optionThree;
 }
 
+//function to open the new question form
+function startInputForm(){
+    document.getElementById("newQestionForm").style.visibility = "visible";
+}
+
 //function to add new questions to the quiz
 function addQuestion(){
+   
     
+    var question = document.getElementById("newQestion").value;
+    var optionOne = document.getElementById("newOptionOne").value;
+    var optionTwo = document.getElementById("newOptionTwo").value;
+    var optionThree = document.getElementById("newOptionThree").value;
+    var saveQuestion = new questionData(question, optionOne, optionTwo, optionThree, answerSelection);
+    questionsArray.push(saveQuestion);
+    document.getElementById("newQuestFormReset").reset();
+    questionNumber++;
 }
+
+//function to get correct answer from the form and set it to a varible to be added in the array
+function subQuestAnswer(answer){
+    answerSelection = answer;
+}
+
+function restartQuiz(){
+    questionNumber = 0;
+    document.getElementById("submit").style.visibility = "hidden";
+    document.getElementById("openQuestionInput").style.visibility = "hidden";
+    document.getElementById("newQestionForm").style.visibility = "hidden";
+    document.getElementById("output").innerHTML = "";
+    score = 0;
+    questionToPage();
+}
+
+

@@ -51,7 +51,7 @@ function objectCreation(){
     questionsArray = [qustionOne, qustionTwo, qustionThree, qustionFour, qustionFive];
     
     //Populate the first question to the screen
-   questionToPage();
+    questionToPage();
 }
 
 //function to take the answer automatically and then move on to the next question

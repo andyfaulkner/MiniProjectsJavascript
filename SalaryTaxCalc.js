@@ -125,6 +125,7 @@ function drawChart () {
         { y: natInsContribution },
         { y: totalValTax},
         { y: afterTax }
+            
       
         ]
       }
